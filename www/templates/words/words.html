@@ -1,0 +1,13 @@
+<header class="mui-bar header-bar">
+    <h1 class="mui-title">语料采集beta v1</h1>
+</header>
+
+<div class="mui-content">
+    <ul class="mui-table-view">
+        <% _.each(word_list,function(x,i){ %>
+        <li class="mui-table-view-cell" data-click="goto" data-page="read" data-text="{{ x.text }}">
+            <a class="mui-navigate-right">{{ x.text }}</a>
+        </li>
+        <% }) %>
+    </ul>
+</div>

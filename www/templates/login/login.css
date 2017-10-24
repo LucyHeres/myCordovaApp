@@ -1,0 +1,18 @@
+.page-login{
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    text-align: center;
+    padding:10px;
+    background-image: url('../../media/login.png');
+}
+.page-login .center {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
+}
+.page-login .login{
+    font-size:14px;
+    padding:8px !important;
+    color:white;
+}
