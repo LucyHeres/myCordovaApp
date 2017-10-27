@@ -3,7 +3,7 @@
     width: 100%;
     background-size: 100% 100%;
     text-align: center;
-    padding:10px;
+    padding:0.2rem;
     background-image: url('../../media/login.png');
 }
 .page-login .center {
@@ -13,6 +13,6 @@
 }
 .page-login .login{
     font-size:14px;
-    padding:8px !important;
+    padding:0.14rem !important;
     color:white;
 }

@@ -106,13 +106,9 @@ body {
     position:relative;
 }
 /*匹配 .mui-bar-nav 之后所有的 .mui-content（即后面的所有叫mui-content的兄弟）。*/
-.mui-bar-nav ~ .mui-content {
+.mui-bar ~ .mui-content {
     padding-top: 38px !important;
 }
 .header-bar{
-    position: relative !important;
     box-shadow:0 1px 2px rgba(200,200,200,0.8);
-}
-.mui-content > .mui-table-view:first-child {
-     margin-top: 0 !important;
 }

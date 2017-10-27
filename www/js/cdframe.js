@@ -13,7 +13,7 @@ var CDpages = {
     /**
      * 保存页面page相关信息
      */
-    pages:{},
+    pages:{},//保存初始化完毕的所有组件配置信息
     history:[],
     get_current:function(){
         return CDpages.history[CDpages.history.length-1];
@@ -33,18 +33,19 @@ var CDpages = {
         /**前进 */
         var page = CDpages.pages[page_name];
         var page_html = page.page(page_para);
-        CDapp.html(page_html)
+        CDapp.html(page_html);//用jquery的.html() 方法 ，实现单页面应用
         
         CDpages.history.push({
             page:page,
             para:page_para,
             cache:page.settings.cache?page_html:null,
         })
-        console.log('goto', CDpages.history)
+        console.log('路由历史表', CDpages.history)
     },
 }
-
+//框架主文件
 var CDframe = {
+    // 打开app自动加载CDframe.init()
     init:function(config){
         /**
          * {
@@ -56,59 +57,64 @@ var CDframe = {
          * }
          * 
          */
-        
-        for(var page_name in config){
+        for(var page_name in config){//初始化每个组件
             var page_cfg = config[page_name];
-            var page = {
-                name:page_name,
-                settings:{
+            var page = {//每个组件的五大属性
+                name:page_name,//组件名
+                settings:{//组件配置
                     src: page_cfg.template?page_cfg.template:"templates/"+page_name+'/'+page_name+'.html',
                     js:page_cfg.js?page_cfg.js:"templates/"+page_name+'/'+page_name+'.js',
                     css:page_cfg.css?page_cfg.css:"templates/"+page_name+'/'+page_name+'.css',
                     lazy: page_cfg.lazy?true:false,
                     cache:page_cfg.cache?true:false,
                 },
-                template: null,
+                template: null,//存放html代码片段
+                //加载该组件的html css js文件
                 load:function(){
                     if(this.template === null){
-                        $("<link>").attr({ rel: "stylesheet",type: "text/css",href: this.settings.css}).appendTo("head");
-                        this.template = CDframe.get(this.settings.src);
-                        CDframe.get(this.settings.js, "script");                      
+                        $("<link>").attr({ rel: "stylesheet",type: "text/css",href: this.settings.css}).appendTo("head");//加载css
+                        this.template = CDframe.get(this.settings.src);//加载html
+                        //加载js，并执行该js中的代码，相当于在CDctrl中添加属性 CDctrl.login、CDctrl.words、、
+                        CDframe.get(this.settings.js, "script");
                     }
                 },
+                //加载该组件，并渲染到页面
                 page:function(page_para){
+                    console.log('当前页面',page_name);
                     console.log('传进来的参数',page_para);
-                    this.load()
+                    this.load();
+                    //page_data 为本页面用到的数据
                     var page_data = page_para;
+                    //如果该组件的 js文件 中有 __init__ ，那就覆盖掉 从上个页面传进来的参数==>( __init__方法中专门写本页面所需的参数数据)
                     if(CDctrl[this.name] && CDctrl[this.name].__init__!=undefined){
                         page_data = CDctrl[this.name].__init__(page_para);
                     }
                     console.log('页面接收后处理过的参数',page_para);
-                    
+                    //将该页面的html代码框架（即template）和 该页面所用到的数据（即page_data）混合，用于渲染到页面上
                     var res = page_data?CDframe._template(this.template, page_data): this.template;
                     return res;
                 }
             }
             if(!page.settings.lazy){
-                page.load()
+                page.load()//加载该组件
             }
-
+            // 将该组件初始化完毕后，放到CDpages.pages中
             CDpages.pages[page_name] = page;
         }
         return CDpages;
 
     },
+    //将代码片段和数据混合，渲染生成页面
     _template: function (temp_text, temp_data) {
         var _html = "";
-
         try{
             _html = _.template(temp_text)(temp_data);
-
         }catch (e) {
             console.log('_template error', e)
         }
-        return _html
+        return _html;
     },
+    //此get 和post 方法用于请求页面的js 和html 文件
     get:function(url, dataType){
         console.log('get', url)
         var response= $.ajax(
@@ -128,9 +134,8 @@ var CDframe = {
                 }
             }
         );
-        return response.responseText
+        return response.responseText;
     },
-
     post:function(url, dataType){
         var response= $.ajax(
             {
@@ -148,10 +153,9 @@ var CDframe = {
         return response.responseText
     },
 };
-
+//存放每个组件的js文件
 var CDctrl = {};
-
-
+//绑定事件
 var Actions = {
     action: function (event, $this, action_name) {
         if($this===undefined){$this = $(this)}
@@ -164,27 +168,28 @@ var Actions = {
                 break
             case 1:
                 var page_name = CDpages.get_current().page.name;
+                //如果本组件CDctrl中有该方法，则调用该方法
                 if(CDctrl[page_name] && CDctrl[page_name][action_name]!==undefined){
                     _fn = CDctrl[page_name][action_name]
+                //如果本组件CDctrl中没有该方法，则去调用Actions对象中的通用方法
                 }else if(Actions[action_name] !== undefined){
                     _fn = Actions[action_name]
                 }
                 break
-            default:
+            default://以上都不匹配，则执行default
+                // 当data-click绑定 非本组件CDctrl 中的函数方法时
                 var page_name = fn_names[0];
                 if(CDctrl[page_name] && CDctrl[page_name][fn_names[1]]!==undefined){
                     _fn = CDctrl[page_name][fn_names[1]]
                 }
                 break
         }
-        
-
         try{
             if(_fn == undefined){
                 console.log('action undefined', action_name);
                 return
             }
-            _fn($this);
+            _fn($this);//调用
             event.stopPropagation();
         }catch (e){
             console.log('invalid action', action_name, e, _fn);
@@ -195,6 +200,7 @@ var Actions = {
         console.log('click', $this, $this.data('click'))
         return Actions.action(event, $this, $this.data('click'))
     },
+    //以下为通用方法，如果当前组件的CDctrl中没有时，则调用这里的通用方法
     goto:function($this){
         var page_para = $this.data();
         CDpages.goto(page_para['page'], page_para)
@@ -210,10 +216,7 @@ var Actions = {
 };
 
 $(document).ready(function () {
-    // alert($(".head").css("padding"));
-    // $(".head").css("color","red");
     $(document).on("touchend", "[data-click]", Actions.click);
-
 });
 
 _.templateSettings = {

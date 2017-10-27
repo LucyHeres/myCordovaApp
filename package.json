@@ -12,7 +12,9 @@
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-device": {}
+            "cordova-plugin-device": {},
+            "cordova-plugin-statusbar": {},
+            "cordova-plugin-camera": {}
         },
         "platforms": [
             "android",
@@ -22,7 +24,10 @@
     "dependencies": {
         "cordova-android": "^6.3.0",
         "cordova-browser": "^5.0.1",
+        "cordova-plugin-camera": "^2.4.1",
+        "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-device": "^1.1.6",
+        "cordova-plugin-statusbar": "^2.2.3",
         "cordova-plugin-whitelist": "1"
     }
 }

@@ -27,16 +27,24 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        document.body.style.width=window.screen.width + "px";
-        alert(device.version);
-        if (device.platform.toLowerCase() == "ios" && parseInt(device.version)<10) {
-            document.body.style.height=window.screen.height + "px";
-            document.body.style.paddingTop = "20px";
-            document.body.style.backgroundColor = "#f7f7f7";
-        }else{
-            document.body.style.height=window.screen.height-20 + "px";
+        // 手机状态栏问题
+        document.body.style.width = window.screen.width + "px";
+        if (cordova.platformId == 'android') {
+            document.body.style.height = window.screen.height - 20 + "px";
+            StatusBar.backgroundColorByHexString("#333");
         }
-        CDframe.init({
+        else if (cordova.platformId == "ios") {
+            document.body.style.height = window.screen.height - 20 + "px";
+            StatusBar.overlaysWebView(false);
+            StatusBar.backgroundColorByHexString("#f7f7f7");
+        }
+        else {
+            document.body.style.height = window.screen.height + "px";
+
+        }
+
+
+        CDframe.init({// 所有的组件
             login: {},
             words: {
                 cache: true,
@@ -46,8 +54,25 @@ var app = {
             }
         });
 
+        //安卓手机硬件退出问题
+        var eventBackButton = function () {
+            if (CDpages.get_current().page.name == 'words' || CDpages.get_current().page.name == 'login') {
+                mui.toast("再点一次 退出");
+                setTimeout(function(){
+                    document.addEventListener("backbutton", eventBackButton, false);
+                },2000);
+                document.removeEventListener("backbutton", eventBackButton, false);
+            } else if(CDpages.get_current().page.name == 'read'){
+                CDpages.goto('words');
+            }else{
+                CDpages.back();
+            }
+        }
+        document.addEventListener("backbutton", eventBackButton, false);
+
         CDpages.goto('login');
-        
+
+
     }
 
 };
