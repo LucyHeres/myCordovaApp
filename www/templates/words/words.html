@@ -6,7 +6,9 @@
     <ul class="mui-table-view">
         <% _.each(word_list,function(x,i){ %>
         <li class="mui-table-view-cell" data-click="goto" data-page="read" data-text="{{ x.text }}">
-            <a class="mui-navigate-right">{{ x.text }}</a>
+            <div class="mui-navigate-right">
+                <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{ x.text }}</p>
+            </div>
         </li>
         <% }) %>
     </ul>

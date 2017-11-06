@@ -51,6 +51,9 @@ var app = {
             },
             read: {
                 lazy:true
+            },
+            test:{
+                lazy:true
             }
         });
 

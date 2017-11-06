@@ -216,7 +216,7 @@ var Actions = {
 };
 
 $(document).ready(function () {
-    $(document).on("touchend", "[data-click]", Actions.click);
+    $(document).on("tap", "[data-click]", Actions.click);
 });
 
 _.templateSettings = {

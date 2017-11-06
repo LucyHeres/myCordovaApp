@@ -14,7 +14,8 @@
             "cordova-plugin-whitelist": {},
             "cordova-plugin-device": {},
             "cordova-plugin-statusbar": {},
-            "cordova-plugin-camera": {}
+            "cordova-plugin-camera": {},
+            "cordova-plugin-file": {}
         },
         "platforms": [
             "android",
@@ -27,6 +28,7 @@
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-device": "^1.1.6",
+        "cordova-plugin-file": "^4.3.3",
         "cordova-plugin-statusbar": "^2.2.3",
         "cordova-plugin-whitelist": "1"
     }
