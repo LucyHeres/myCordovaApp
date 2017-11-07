@@ -42,8 +42,6 @@ var app = {
             document.body.style.height = window.screen.height + "px";
 
         }
-
-
         CDframe.init({// 所有的组件
             login: {},
             words: {

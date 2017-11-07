@@ -105,6 +105,15 @@ body {
     width:100%;
     position:relative;
 }
+.fadeIn{
+    transform:translateX(0);
+    transition:transform 0.5s ease-in-out;
+}
+.fadeOut{
+    transform:translateX(100%);
+}
+
+
 /*匹配 .mui-bar-nav 之后所有的 .mui-content（即后面的所有叫mui-content的兄弟）。*/
 .mui-bar ~ .mui-content {
     padding-top: 38px !important;

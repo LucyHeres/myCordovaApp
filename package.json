@@ -15,7 +15,9 @@
             "cordova-plugin-device": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-camera": {},
-            "cordova-plugin-file": {}
+            "cordova-plugin-file": {},
+            "cordova-plugin-x-toast": {},
+            "cordova-plugin-showtoast": {}
         },
         "platforms": [
             "android",
@@ -29,7 +31,9 @@
         "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-device": "^1.1.6",
         "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-showtoast": "file:../../../ShowToast",
         "cordova-plugin-statusbar": "^2.2.3",
-        "cordova-plugin-whitelist": "1"
+        "cordova-plugin-whitelist": "1",
+        "cordova-plugin-x-toast": "^2.6.0"
     }
 }

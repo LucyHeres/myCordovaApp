@@ -34,7 +34,8 @@ var CDpages = {
         var page = CDpages.pages[page_name];
         var page_html = page.page(page_para);
         CDapp.html(page_html);//用jquery的.html() 方法 ，实现单页面应用
-        
+
+
         CDpages.history.push({
             page:page,
             para:page_para,
@@ -58,6 +59,7 @@ var CDframe = {
          * 
          */
         for(var page_name in config){//初始化每个组件
+
             var page_cfg = config[page_name];
             var page = {//每个组件的五大属性
                 name:page_name,//组件名
@@ -203,7 +205,14 @@ var Actions = {
     //以下为通用方法，如果当前组件的CDctrl中没有时，则调用这里的通用方法
     goto:function($this){
         var page_para = $this.data();
-        CDpages.goto(page_para['page'], page_para)
+        // $(".app").css("transform","translateX(100%)");
+        $(".app").removeClass("fadeIn");
+        $(".app").addClass("fadeOut");
+        CDpages.goto(page_para['page'], page_para);
+        $(".app").addClass("fadeIn");
+        // $(".app").css("transform","translateX(0)");
+        $(".app").removeClass("fadeOut");
+
     },
     back:function(){
         CDpages.back();
@@ -218,6 +227,7 @@ var Actions = {
 $(document).ready(function () {
     $(document).on("tap", "[data-click]", Actions.click);
 });
+
 
 _.templateSettings = {
     //interpolate: /\{\{(.+?)\}\}/g,
