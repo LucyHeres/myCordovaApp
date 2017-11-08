@@ -1,28 +1,31 @@
-<header class="mui-bar header-bar">
-    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" data-click="back"></a>
-    <h1 class="mui-title">第二页</h1>
-</header>
-<div class="mui-content">
-    <div class="mui-card">
-        <div class="mui-card-content">
-            <div class="mui-card-content-inner">
-                {{text}}
+
+<div id="read" class="slideIn">
+    <header class="mui-bar header-bar">
+        <b class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" data-click="back"></b>
+        <h1 class="mui-title">第二页</h1>
+    </header>
+    <div class="mui-content">
+        <div class="mui-card">
+            <div class="mui-card-content">
+                <div class="mui-card-content-inner">
+                    {{text}}
+                </div>
             </div>
         </div>
-    </div>
-    <div class="mui-btn" data-click="takePic">拍照</div>
-    <div class="mui-btn" data-click="goto" data-page="test">跳转到测试页</div>
-    <a class="mui-btn" href="#delete">跳转到测试页</a>
-    <div id="delete" class="mui-popover mui-popover-action mui-popover-bottom">
-        <ul class="mui-table-view">
-            <li class="mui-table-view-cell">
-                <a href="#" style="color: #FF3B30;">删除信息</a>
-            </li>
-        </ul>
-        <ul class="mui-table-view">
-            <li class="mui-table-view-cell">
-                <a href="#delete"><b>取消</b></a>
-            </li>
-        </ul>
+        <div class="mui-btn" data-click="takePic">拍照</div>
+        <div class="mui-btn" data-click="goto" data-page="test">跳转到测试页</div>
+        <a class="mui-btn" href="#delete">跳转到测试页</a>
+        <div id="delete" class="mui-popover mui-popover-action mui-popover-bottom">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell">
+                    <a href="#" style="color: #FF3B30;">删除信息</a>
+                </li>
+            </ul>
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell">
+                    <a href="#delete"><b>取消</b></a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

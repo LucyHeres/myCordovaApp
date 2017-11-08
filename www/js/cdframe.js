@@ -20,20 +20,31 @@ var CDpages = {
     },
     back:function(){
         /**后退 */
+        var delPage=this.get_current().page.name;
+        $("#"+delPage).remove();
         CDpages.history.pop();
-        var history_obj = this.get_current();
-        if(history_obj.cache){
-            CDapp.html(history_obj.cache)        
-        }else{
-            CDapp.html(history_obj.page.page(history_obj.para))
-        }
-        console.log('back', CDpages.history)
+        // var history_obj = this.get_current();
+        // if(history_obj.cache){
+        //     CDapp.html(history_obj.cache)
+        // }else{
+        //     CDapp.html(history_obj.page.page(history_obj.para))
+        // }
+        console.log('back', CDpages.history);
     },
     goto:function(page_name, page_para){
         /**前进 */
         var page = CDpages.pages[page_name];
         var page_html = page.page(page_para);
-        CDapp.html(page_html);//用jquery的.html() 方法 ，实现单页面应用
+        // CDapp.html(page_html);//用jquery的.html() 方法 ，实现单页面应用
+        CDapp.append(page_html);
+        // 从右侧滑入样式
+        var $last=$('.app>div:last');
+        if($last.hasClass('slideIn')){
+            setTimeout(function(){
+                $last.removeClass('slideIn');
+            },1);
+            $last.addClass('slideInRight');
+        }
 
 
         CDpages.history.push({
@@ -205,13 +216,11 @@ var Actions = {
     //以下为通用方法，如果当前组件的CDctrl中没有时，则调用这里的通用方法
     goto:function($this){
         var page_para = $this.data();
-        // $(".app").css("transform","translateX(100%)");
-        $(".app").removeClass("fadeIn");
-        $(".app").addClass("fadeOut");
+        // $(".app").removeClass("fadeIn");
+        // $(".app").addClass("fadeOut");
         CDpages.goto(page_para['page'], page_para);
-        $(".app").addClass("fadeIn");
-        // $(".app").css("transform","translateX(0)");
-        $(".app").removeClass("fadeOut");
+        // $(".app").addClass("fadeIn");
+        // $(".app").removeClass("fadeOut");
 
     },
     back:function(){
