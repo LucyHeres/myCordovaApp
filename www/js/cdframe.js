@@ -46,6 +46,11 @@ var CDpages = {
             $last.addClass('slideInRight');
         }
 
+        //Dom 加载完之后执行的init，不同于__init__是dom加载完成前对页面上所需数据的init
+        if(CDctrl[page_name].init){
+            CDctrl[page_name].init();
+        }
+
 
         CDpages.history.push({
             page:page,
@@ -216,12 +221,7 @@ var Actions = {
     //以下为通用方法，如果当前组件的CDctrl中没有时，则调用这里的通用方法
     goto:function($this){
         var page_para = $this.data();
-        // $(".app").removeClass("fadeIn");
-        // $(".app").addClass("fadeOut");
         CDpages.goto(page_para['page'], page_para);
-        // $(".app").addClass("fadeIn");
-        // $(".app").removeClass("fadeOut");
-
     },
     back:function(){
         CDpages.back();

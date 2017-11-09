@@ -31,6 +31,6 @@ CDctrl.login={
     },
     init:function(){
         console.log("login init");
+
     }
 }
-CDctrl.login.init();

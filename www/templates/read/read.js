@@ -1,7 +1,4 @@
 CDctrl.read={
-    // __init__:function(page_para){
-    //
-    // }
     takePic:function(){
         navigator.camera.getPicture(successCallback, errorCallback, {
             quality: 50,

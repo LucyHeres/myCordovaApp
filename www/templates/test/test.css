@@ -1,0 +1,11 @@
+.carousel {
+  display: flex;
+  -webkit-transition: transform 0.5s ease-out;
+  -moz-transition: transform 0.5s ease-out;
+  -ms-transition: transform 0.5s ease-out;
+  -o-transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.carousel_item img {
+  width: 100%;
+}

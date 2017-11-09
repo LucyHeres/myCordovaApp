@@ -6,6 +6,10 @@ CDctrl.test = {
         //     document.getElementById("image").src = e.target.result;
         // }
         // fileEntry.file();
+
+    },
+    init:function(){
+        CDplugs.init();
     },
     // fun: function () {
     //     var readerFile = document.getElementById("file").files[0];
@@ -34,5 +38,6 @@ CDctrl.test = {
         function errorCallback(e){
             alert("err:"+e);
         }
-    }
+    },
+
 }

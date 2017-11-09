@@ -4,55 +4,93 @@
         <b class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" data-click="back"></b>
         <h1 class="mui-title">书架</h1>
     </header>
+<div class="mui-content">
 
-    <div id="slider" class="mui-slider" style="touch-action:none;">
-        <div class="mui-slider-group">
-            <!-- 第一张 -->
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="img/shuijiao.jpg">
-                </a>
+    <!--<input type="file"  id="file" onchange="CDctrl.test.fun()"/>-->
+    <!--<img src="" id="image" alt="" />-->
+    <!--<div class="mui-btn" data-click="testPlugin">测试myplugin</div>-->
+    <!--<div class="mui-btn" data-click="takepic">测试takepic</div>-->
+    <br>
+    <div data-plug="carousel" class="carousel">
+        <div class="carousel_item">
+            <div>1</div>
+            <div>1</div>
+            <div data-plug="carousel" class="carousel">
+                <div class="carousel_item">123</div>
+                <div class="carousel_item">456</div>
             </div>
-            <!-- 第二张 -->
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="img/muwu.jpg">
-                </a>
-            </div>
-            <!-- 第三张 -->
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="img/cbd.jpg">
-                </a>
-            </div>
-            <!-- 第四张 -->
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="img/yuantiao.jpg">
-                </a>
-            </div>
+            <!--<div id="slider" class="mui-slider" style="touch-action:none;">-->
+                <!--<div class="mui-slider-group">-->
+                    <!--&lt;!&ndash; 第一张 &ndash;&gt;-->
+                    <!--<div class="mui-slider-item">-->
+                        <!--<a href="#">-->
+                            <!--<img src="img/shuijiao.jpg">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; 第二张 &ndash;&gt;-->
+                    <!--<div class="mui-slider-item">-->
+                        <!--<a href="#">-->
+                            <!--<img src="img/muwu.jpg">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; 第三张 &ndash;&gt;-->
+                    <!--<div class="mui-slider-item">-->
+                        <!--<a href="#">-->
+                            <!--<img src="img/cbd.jpg">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; 第四张 &ndash;&gt;-->
+                    <!--<div class="mui-slider-item">-->
+                        <!--<a href="#">-->
+                            <!--<img src="img/yuantiao.jpg">-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="mui-slider-indicator">-->
+                    <!--<div class="mui-indicator mui-active"></div>-->
+                    <!--<div class="mui-indicator"></div>-->
+                    <!--<div class="mui-indicator"></div>-->
+                    <!--<div class="mui-indicator"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div>1</div>
         </div>
-        <div class="mui-slider-indicator">
-            <div class="mui-indicator mui-active"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
+        <div class="carousel_item">
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
+            <div>2</div>
         </div>
+        <div class="carousel_item"><img src="img/cbd.jpg"></div>
     </div>
-    <div class="mui-content">
+</div>
 
-        <div class="mui-content-padded">
-            <input type="file"  id="file" onchange="CDctrl.test.fun()"/>
-            <img src="" id="image" alt="" />
-            <div class="mui-btn" data-click="testPlugin">测试myplugin</div>
-            <div class="mui-btn" data-click="takepic">测试takepic</div>
-        </div>
-    </div>
+
 
     <script type="text/javascript" charset="utf-8">
-        mui.init({
-            swipeBack:true //启用右滑关闭功能
-        });
+        mui.init();
         var slider = mui("#slider");
         slider.slider();
     </script>
