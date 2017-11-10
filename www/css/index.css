@@ -17,132 +17,209 @@
  * under the License.
  */
 * {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 /**
    css reset
  */
 html {
-    color: #000;
-    background: #fff;
-    overflow-y: scroll;
-    -webkit-text-size-adjust: 100% ;
-    -ms-text-size-adjust: 100%;
+  color: #000;
+  background: #fff;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100% ;
+  -ms-text-size-adjust: 100%;
 }
 html * {
-    outline: 0;
-    -webkit-text-size-adjust: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: 0;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-html,body {
-    font-family: PingFangSC-Light,'pingfang','helvetica neue','hiragino sans gb',arial,'microsoft yahei ui','microsoft yahei',simsun,sans-serif;
+html,
+body {
+  font-family: PingFangSC-Light, 'pingfang', 'helvetica neue', 'hiragino sans gb', arial, 'microsoft yahei ui', 'microsoft yahei', simsun, sans-serif;
 }
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-    font-size: 14px;
-    color:#333;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box !important;
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-fieldset,img {
-    border: 0
+fieldset,
+img {
+  border: 0;
 }
-abbr,acronym {
-    border: 0;
-    font-variant: normal
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
 }
-address,caption,cite,code,dfn,em,th,var {
-    font-style: normal;
-    font-weight: 500
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: 500;
 }
-ol,ul {
-    list-style: none
+ol,
+ul {
+  list-style: none;
 }
-caption,th {
-    text-align: left
+caption,
+th {
+  text-align: left;
 }
-h1,h2,h3,h4,h5,h6 {
-    font-weight: normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
 }
-sub,sup {
-    font-size: 75% ;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline
+sub,
+sup {
+  font-size: 75% ;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 sup {
-    top: -.5em
+  top: -0.5em;
 }
 sub {
-    bottom: -.25em
+  bottom: -0.25em;
 }
-a{
-    text-decoration: none !important;
+a {
+  text-decoration: none !important;
 }
 a:hover {
-    text-decoration: underline
+  text-decoration: underline;
 }
-ins,a {
-    text-decoration: none
+ins,
+a {
+  text-decoration: none;
 }
-input{
-    border:none;
-    outline: none;
+input {
+  border: none;
+  outline: none;
 }
 /**
    自写样式 start
  */
 body {
-    font-size:14px;
+  font-size: 14px;
 }
 /* Portrait layout (default) */
 .app {
-    height:100%;
-    width:100%;
-    position:relative;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
-.app>div{
-    height:100%;
-    width:100%;
-    position:fixed;
-    top:0;
-
+.app > div {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
-.slideIn{
-    -webkit-transform:translate3d(100%,0,0);
-    -moz-transform:translate3d(100%,0,0);
-    -ms-transform:translate3d(100%,0,0);
-    -o-transform:translate3d(100%,0,0);
-    transform:translate3d(100%,0,0);
- }
-.slideInRight{
-    -webkit-transform:translate3d(0,0,0) ;
-    -moz-transform:translate3d(0,0,0) ;
-    -ms-transform:translate3d(0,0,0) ;
-    -o-transform:translate3d(0,0,0) ;
-    transform:translate3d(0,0,0);
-
-    -webkit-transition:transform 0.5s ease-out 0.1s;
-    -moz-transition:transform 0.5s ease-out 0.1s;
-    -ms-transition:transform 0.5s ease-out 0.1s;
-    -o-transition:transform 0.5s ease-out 0.1s;
-    transition:transform 0.5s ease-out 0.1s;
-
+.slideIn {
+  transform: translate3d(7.2rem, 0, 0);transition: transform 0.5s ease-out 0.1s;
+  -webkit-backface-visibility: hidden;
+-webkit-transform-style: preserve-3d;
 }
- .mui-content{
-     height:100%;
-     overflow: scroll;
-     overflow-scrolling: touch;
- }
-
+.slideInRight {
+  transform: translate3d(0, 0, 0);
+  
+}
+.mui-content {
+  height: 100%;
+  overflow: scroll;
+  overflow-scrolling: touch;
+}
 /*匹配 .mui-bar-nav 之后所有的 .mui-content（即后面的所有叫mui-content的兄弟）。*/
 .mui-bar ~ .mui-content {
-    padding-top: 38px !important;
+  padding-top: 44px !important;
 }
-.header-bar{
-    box-shadow:0 1px 2px rgba(200,200,200,0.8);
+.header-bar {
+  box-shadow: 0 1px 2px rgba(200, 200, 200, 0.8);
+}
+.carousel {
+  display: flex;
+  height: 100%;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: transform 0.5s ease-out;
+  -moz-transition: transform 0.5s ease-out;
+  -ms-transition: transform 0.5s ease-out;
+  -o-transition: transform 0.5s ease-out;
+  transition: transform 0.5s ease-out;
+}
+.carousel .carousel_item {
+  overflow: scroll;
+}
+.carousel .carousel_item img {
+  width: 100%;
+}
+.carousel-tabs {
+  display: flex;
+}
+.carousel-tabs .carousel-tab {
+  width: 1.8rem;
+  margin: 0 0.3rem;
+  height: 42px;
+  line-height: 44px;
+  text-align: center;
+}
+.carousel-tabs .carousel-tab.active {
+  color: #e4393c;
+  border-bottom: 2px solid #e4393c;
 }

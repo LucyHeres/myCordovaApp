@@ -24,6 +24,7 @@
     </platform>
     <engine name="android" spec="^6.3.0" />
     <engine name="browser" spec="^5.0.1" />
+    <plugin name="card.io.cordova.mobilesdk" spec="git+https://github.com/card-io/card.io-Cordova-Plugin.git" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
     <plugin name="cordova-plugin-file" spec="^4.3.3" />
