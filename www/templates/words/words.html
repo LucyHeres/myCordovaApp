@@ -5,7 +5,8 @@
     </header>
 
     <div class="mui-content">
-        <ul class="mui-table-view">
+        <div data-plug="pullDownRefresh" class="pullDownRefresh"></div>
+        <ul class="mui-table-view refreshBox">
             <% _.each(word_list,function(x,i){ %>
             <li class="mui-table-view-cell" data-click="goto" data-page="read" data-text="{{ x.text }}">
                 <div class="mui-navigate-right">

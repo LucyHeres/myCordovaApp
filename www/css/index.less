@@ -161,7 +161,7 @@ body {
   transition:transform 0.5s ease-out;
 }
 .carousel .carousel_item{
-  overflow:scroll;
+  overflow:scroll;background:#fff;
   img {
     width:100%;
   }
@@ -178,5 +178,15 @@ body {
       color:#e4393c;
       border-bottom:2px solid #e4393c;
     }
+  }
+}
+.pullDownRefresh{
+  text-align: center;
+  width:100%;
+  height:0;
+  transition:height 0.5s ease-out;
+  &>div:first-child{
+    margin:20px 0 5px 0;
+    font-size:30px;
   }
 }

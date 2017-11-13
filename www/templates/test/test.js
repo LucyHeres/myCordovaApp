@@ -11,10 +11,6 @@ CDctrl.test = {
     init:function(){
         CDplugs.init();
     },
-    // fun: function () {
-    //     var readerFile = document.getElementById("file").files[0];
-    //     CDdata.reader.readAsDataURL(readerFile);
-    // }
     testPlugin:function(){
      console.log("cordova 的插件",cordova.plugins);
         cordova.plugins.ShowToast.coolMethod("hello world",
