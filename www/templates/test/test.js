@@ -35,5 +35,9 @@ CDctrl.test = {
             alert("err:"+e);
         }
     },
+    doRefresh:function () {
+        console.log(111);
+        return true;
+    }
 
 }

@@ -67,5 +67,4 @@ CDctrl.read = {
             "keepApplicationTheme": true
         }, CDctrl.read.scanCreditCard.onCardIOComplete, CDctrl.read.scanCreditCard.onCardIOCancel);
     }
-
 }

@@ -21,12 +21,16 @@ var CDplugs = {
         var n = 0;
         var canswipe = true;
         var $tabs = $(".carousel-tabs");
-        console.log("轮播==>==================" + $this);
         var width = window.screen.width;
-        $this.children().css("width", width + "px");
         var NUM = $this.children().length;
+        $this.children().css("width", width + "px");
         $this.css("width", NUM * width + "px");
-        $this.parent().css("overflow", "hidden");//即.container元素
+        // 如果轮播的父元素是mui-content ,需要特殊设置
+        $this.parent().css("overflow", "hidden");//大/小轮播都设置
+        if($this.parent().hasClass("mui-content")){
+            $this.parent().css("height", "100%");//只设置大轮播，即父元素是.mui-content的大轮播
+        }
+
         $this.on('swipeleft', function () {
             event.stopPropagation();
             if (canswipe) {
@@ -76,39 +80,82 @@ var CDplugs = {
     },
 
     pullDownRefresh: function ($this) {
-        $this.html("<div class='mui-icon mui-icon-pulldown'></div><p>下拉刷新...</p>");
-        var startY = endY = countY = 0;
+        var refreshFlag = 0;// 下拉刷新执行时控制页面假死标志位
+        $this.html("<p>下拉刷新...</p>");
+        var startY = null;//开始抓取标志位
+        var endY = countY = 0;
         $(".refreshBox").on('touchstart', function (event) {
-            sum = 0;
-            var touch = event.targetTouches[0];
-            startY = touch.pageY;
+            if (refreshFlag) {
+                event.preventDefault();
+                return;
+            }
+                var touch = event.targetTouches[0];
+                startY = touch.pageY;
         });
         $(".refreshBox").on('touchmove', function (event) {
-            var touch = event.targetTouches[0];
-            endY = touch.pageY;
-            countY = endY - startY;
-            countY = countY > 100 ? 100 : countY;
-            $this.css("height", countY + "px");
-        });
-        $(".refreshBox").on('touchend', function (event) {
-            if(countY<90){
-                $this.css("height", 0);
-                $this.html("<div class='mui-icon mui-icon-pulldown'></div><p>下拉刷新...</p>");
+            if (startY === null) {
+                return;
+            }
+            if (refreshFlag) {
+                event.preventDefault();
+                return;
+            }
+            if($(".mui-content").offset().top==0){
+                var touch = event.targetTouches[0];
+                endY = touch.pageY;
+                countY = endY - startY;
+                _countY = (endY - startY)/5;
+                countY = countY > 300 ? 300 : countY;
+                $this.css("height", _countY + "px");
             }else{
-                $this.html("<div class='mui-icon mui-icon-spinner-cycle mui-spin'></div><p>正在刷新...</p>");
-                var pageName=CDpages.get_current().page.name;
-                if(CDctrl[pageName].doRefresh()){
-                    $this.html("<div class='mui-icon mui-icon-checkmarkempty'></div><p>刷新完成</p>");
-                    setTimeout(function () {
-                        $this.css("height", 0);
-                        $this.html("<div class='mui-icon mui-icon-pulldown'></div><p>下拉刷新...</p>");
-                    },1000)
-
-                }else{
-                    alert("刷新失败");
-                }
+                console.log("============",$(".mui-content").css("transform"));
             }
 
         });
-    }
+        $(".refreshBox").on('touchend', function (event) {
+            if (refreshFlag) {
+                event.preventDefault();
+                return;
+            }
+                if (countY < 0) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                else if (countY >= 0 && countY < 10) {
+                    //此处的touchend与子元素的touchend点击事件有些冲突
+                    //如果countY小于10，则判定为点击的是子元素，则去执行子元素的touchend事件
+                }
+                else if (countY >= 10 && countY < 270) {
+                    event.stopPropagation();//禁止事件再继续蔓延，即不去执行子元素上的touchend事件
+                    $this.css("height", 0);
+                    setTimeout(function(){
+                        // 重置标志位
+                        refreshFlag = 0;
+                    },300);
+                    $this.html("<p>下拉刷新...</p>");
+                    startY = endY = countY = 0;//参数归零
+                }
+                else {
+                    event.stopPropagation();
+                    $this.html("<p>正在刷新...</p>");
+                    refreshFlag = 1;
+                    var pageName = CDpages.get_current().page.name;
+                    //刷新
+                    if (CDctrl[pageName].doRefresh()) {
+                        $this.html("<p>刷新完成</p>");
+                        setTimeout(function () {
+                            $this.css("height", 0);
+                            refreshFlag = 0;
+                            $this.html("<p>下拉刷新...</p>");
+                        }, 500)
+                    } else {
+                        alert("刷新失败");
+                    }
+                    endY = countY = 0;//参数归零
+                    startY=null;
+                }
+        });
+    },
+
 }
+CDplugs.init();

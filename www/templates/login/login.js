@@ -1,35 +1,38 @@
-CDctrl.login={
-    __init__:function(){
+CDctrl.login = {
+    __init__: function () {
         console.log('__login__')
     },
-    login:function($this){
-        console.log('login', $this)
+    login: function ($this) {
+        console.log('login', $this);
         var $form = $('.page-login form');
         var username = $form.find("input[name=username]").val();
         $.ajax({
-                url:'http://techjyt.com:90/api/account/login/',
+                url: 'http://techjyt.com:90/api/account/login/',
                 async: false,
                 type: "POST",
                 data: {username: username, password: username},
-                success:function(result){
+                success: function (result) {
                     console.log(result);
-                    if(result.error){
+                    if (result.error) {
                         $form.find('.error').html(result.error);
-                    }else{
+                    } else {
                         CDdata["account-token"] = result["account-token"];
                         console.log("CDdata", CDdata);
                         CDpages.goto('words');
                     }
                 },
-                complete: function(XHR, TS){
-                    if(XHR.status != 200) {
+                complete: function (XHR, TS) {
+                    if (XHR.status != 200) {
                         console.log("complete", url, XHR, TS);
                     }
+                },
+                error: function (e) {
+                    console.log("=========",e);
                 }
             }
         )
     },
-    init:function(){
+    init: function () {
         console.log("login init");
 
     }

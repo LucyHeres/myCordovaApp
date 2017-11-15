@@ -104,39 +104,34 @@ body {
   height:100%;
   width:100%;
   position:relative;
+
 }
 .app>div{
   height:100%;
   width:100%;
-  position:fixed;
-  top:0;
-
+  position: absolute;
+  top: 0;
+  left:0;
+  z-index: 99;
+  overflow:scroll;
+  background: #efeff4;
+  &.on{
+    z-index: 100;
+  }
 }
 .slideIn{
-  -webkit-transform:translate3d(100%,0,0);
-  -moz-transform:translate3d(100%,0,0);
-  -ms-transform:translate3d(100%,0,0);
-  -o-transform:translate3d(100%,0,0);
   transform:translate3d(100%,0,0);
+  transition:transform 0.5s ease-out 0.1s;
 }
 .slideInRight{
-  -webkit-transform:translate3d(0,0,0) ;
-  -moz-transform:translate3d(0,0,0) ;
-  -ms-transform:translate3d(0,0,0) ;
-  -o-transform:translate3d(0,0,0) ;
   transform:translate3d(0,0,0);
-
-  -webkit-transition:transform 0.5s ease-out 0.1s;
-  -moz-transition:transform 0.5s ease-out 0.1s;
-  -ms-transition:transform 0.5s ease-out 0.1s;
-  -o-transition:transform 0.5s ease-out 0.1s;
   transition:transform 0.5s ease-out 0.1s;
-
 }
 .mui-content{
-  height:100%;
-  overflow: scroll;
-  overflow-scrolling: touch;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  background: none !important;
 }
 
 /*匹配 .mui-bar-nav 之后所有的 .mui-content（即后面的所有叫mui-content的兄弟）。*/
@@ -169,7 +164,7 @@ body {
 .carousel-tabs{
   display: flex;
   .carousel-tab{
-    width:1.8rem;
+    flex:1;
     margin:0 0.3rem;
     height:42px;
     line-height:44px;
@@ -184,9 +179,11 @@ body {
   text-align: center;
   width:100%;
   height:0;
-  transition:height 0.5s ease-out;
-  &>div:first-child{
-    margin:20px 0 5px 0;
-    font-size:30px;
+  transition:height 0.3s ease-out;
+  p{
+    padding:15px 0;
   }
+}
+.refreshBox{
+
 }

@@ -22,13 +22,11 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
+
     onDeviceReady: function() {
         // 手机状态栏问题
         document.body.style.width = window.screen.width + "px";
+
         if (cordova.platformId == 'android') {
             document.body.style.height = window.screen.height - 20 + "px";
             StatusBar.backgroundColorByHexString("#333");
@@ -45,16 +43,19 @@ var app = {
         CDframe.init({// 所有的组件
             login: {},
             words: {
-                cache: true,
+
             },
             read: {
                 lazy:true
             },
             test:{
                 lazy:true
+            },
+            rank:{
+                lazy:true
             }
         });
-
+        CDplugs.init();
         //安卓手机硬件退出问题
         var eventBackButton = function () {
             if (CDpages.get_current().page.name == 'words' || CDpages.get_current().page.name == 'login') {

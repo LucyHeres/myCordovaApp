@@ -20,39 +20,63 @@ var CDpages = {
     },
     back: function () {
         /**后退 */
+
         var delPage = this.get_current().page.name;
-        $("#" + delPage).remove();
+
         CDpages.history.pop();
-        // var history_obj = this.get_current();
-        // if(history_obj.cache){
-        //     CDapp.html(history_obj.cache)
-        // }else{
-        //     CDapp.html(history_obj.page.page(history_obj.para))
-        // }
+        var history_obj = this.get_current();
+        if (history_obj.cache) {
+            CDapp.prepend(history_obj.cache);
+        } else {
+            CDapp.prepend(history_obj.page.page(history_obj.para));
+        }
         console.log('back', CDpages.history);
+
+        // // 如果页面需要滑出到右侧
+        var $last = $('.app>div:last');
+        if ($last.hasClass('slideInRight')) {
+            $last.removeClass('slideInRight');
+            $last.addClass('slideIn');
+        }
+        //添加回上一个页面后，删除当前页面
+        if (CDapp.children().length > 1) {
+            $last.remove();
+            var $last = $('.app>div:last');
+            $last.addClass("on");
+        }
     },
     goto: function (page_name, page_para) {
+        var $last = $('.app>div:last');
+        $last.removeClass("on");
         /**前进 */
         var page = CDpages.pages[page_name];
         var page_html = page.page(page_para);
-        // CDapp.html(page_html);//用jquery的.html() 方法 ，实现单页面应用
         CDapp.append(page_html);
+
         //Dom 加载完之后执行的init，不同于__init__是dom加载完成前对页面上所需数据的init
         if (CDctrl[page_name].init) {
             CDctrl[page_name].init();
         }
-        var $last = $('.app>div:last');
 
-        // 从右侧滑入样式
-        if ($last.hasClass('slideIn')) {
-            setTimeout(function () {
-                $last.addClass('slideInRight');
-            }, 1);
+        //如果页面高度小于屏幕高，设置页面高度
+        if (parseInt($last.css("height")) < window.screen.height) {
+            $last.css("height", window.screen.height + "px");
         }
-
-
-
-
+        var $last = $('.app>div:last');
+        $last.addClass("on");
+        // 如果页面需要从右侧滑入
+        if ($last.hasClass('slideIn')) {
+            $last.removeClass('slideIn');
+            // setTimeout(function () {
+                $last.addClass('slideInRight');
+            // }, 1);
+        }
+        //添加新页面1s后，删除上一个页面
+        setTimeout(function () {
+            if (CDapp.children().length > 1) {
+                CDapp.children()[0].remove();
+            }
+        }, 1000);
 
         CDpages.history.push({
             page: page,
@@ -77,7 +101,6 @@ var CDframe = {
          *
          */
         for (var page_name in config) {//初始化每个组件
-
             var page_cfg = config[page_name];
             var page = {//每个组件的五大属性
                 name: page_name,//组件名
@@ -120,7 +143,7 @@ var CDframe = {
                 }
             }
             if (!page.settings.lazy) {
-                page.load()//加载该组件
+                page.load();//加载该组件
             }
             // 将该组件初始化完毕后，放到CDpages.pages中
             CDpages.pages[page_name] = page;
@@ -224,9 +247,10 @@ var Actions = {
         }
     },
     click: function (event) {
+        event.stopPropagation();
         var $this = $(this);
-        console.log('click', $this, $this.data('click'))
-        return Actions.action(event, $this, $this.data('click'))
+        console.log('click', $this, $this.data('click'));
+        return Actions.action(event, $this, $this.data('click'));
     },
     //以下为通用方法，如果当前组件的CDctrl中没有时，则调用这里的通用方法
     goto: function ($this) {
@@ -238,7 +262,7 @@ var Actions = {
     },
     extend: function (obj) {
         for (var k in obj) {
-            Actions[k] = obj[k]
+            Actions[k] = obj[k];
         }
     }
 };

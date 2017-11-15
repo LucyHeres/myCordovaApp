@@ -1,10 +1,11 @@
+
 .page-login{
     height: 100%;
     width: 100%;
-    background-size: 100% 100%;
+    /*background-size: 100% 100%;*/
     text-align: center;
     padding:0.2rem;
-    background-image: url('../../media/login.png');
+    /*background-image: url('../../media/login.png');*/
 }
 .page-login .center {
     position: relative;
