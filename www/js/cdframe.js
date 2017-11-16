@@ -20,9 +20,7 @@ var CDpages = {
     },
     back: function () {
         /**后退 */
-
         var delPage = this.get_current().page.name;
-
         CDpages.history.pop();
         var history_obj = this.get_current();
         if (history_obj.cache) {
@@ -30,9 +28,12 @@ var CDpages = {
         } else {
             CDapp.prepend(history_obj.page.page(history_obj.para));
         }
+        if (CDctrl[history_obj.page.name].init) {
+            CDctrl[history_obj.page.name].init();
+        }
         console.log('back', CDpages.history);
 
-        // // 如果页面需要滑出到右侧
+        //如果页面需要滑出到右侧
         var $last = $('.app>div:last');
         if ($last.hasClass('slideInRight')) {
             $last.removeClass('slideInRight');
@@ -67,9 +68,7 @@ var CDpages = {
         // 如果页面需要从右侧滑入
         if ($last.hasClass('slideIn')) {
             $last.removeClass('slideIn');
-            // setTimeout(function () {
-                $last.addClass('slideInRight');
-            // }, 1);
+            $last.addClass('slideInRight');
         }
         //添加新页面1s后，删除上一个页面
         setTimeout(function () {
