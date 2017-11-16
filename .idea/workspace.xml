@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d1b6088f-b2a4-493f-908d-02499b6d49e6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/CDplugs.js" afterPath="$PROJECT_DIR$/www/js/CDplugs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/cdframe.js" afterPath="$PROJECT_DIR$/www/js/cdframe.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/login/login.html" afterPath="$PROJECT_DIR$/www/templates/login/login.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -359,7 +356,7 @@
       <workItem from="1510623228019" duration="30153000" />
       <workItem from="1510710224078" duration="32810000" />
       <workItem from="1510750535534" duration="61000" />
-      <workItem from="1510796788920" duration="11914000" />
+      <workItem from="1510796788920" duration="11998000" />
     </task>
     <task id="LOCAL-00001" summary="使用mui库 替换bootstrap&#10;解决iphone status-bar遮挡问题">
       <created>1508755030270</created>
@@ -438,11 +435,18 @@
       <option name="project" value="LOCAL" />
       <updated>1510750576363</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="1.下拉刷新bug修复 android ok ,ios 有bug">
+      <created>1510810861625</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1510810861625</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331190000" />
+    <option name="totallyTimeSpent" value="331274000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -509,7 +513,8 @@
     <MESSAGE value="CDplugs.js  轮播 bug修复" />
     <MESSAGE value="1.下拉刷新 实现&#10;2.删掉mui.js 只用mui.css" />
     <MESSAGE value="1.下拉刷新bug修复 仍有bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.下拉刷新bug修复 仍有bug" />
+    <MESSAGE value="1.下拉刷新bug修复 android ok ,ios 有bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.下拉刷新bug修复 android ok ,ios 有bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
