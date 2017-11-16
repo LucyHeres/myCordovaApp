@@ -20,7 +20,6 @@ var CDpages = {
     },
     back: function () {
         /**后退 */
-        var delPage = this.get_current().page.name;
         CDpages.history.pop();
         var history_obj = this.get_current();
         if (history_obj.cache) {
@@ -126,7 +125,6 @@ var CDframe = {
                 },
                 //加载该组件，并渲染到页面
                 page: function (page_para) {
-                    console.log('当前页面', page_name);
                     console.log('传进来的参数', page_para);
                     this.load();
                     //page_data 为本页面用到的数据

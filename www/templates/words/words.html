@@ -1,4 +1,3 @@
-
 <div id="words">
     <header class="mui-bar header-bar">
         <h1 class="mui-title">首页</h1>
@@ -6,14 +5,18 @@
 
     <div class="mui-content">
         <div data-plug="pullDownRefresh" class="pullDownRefresh"></div>
-        <ul class="mui-table-view refreshBox">
-            <% _.each(word_list,function(x,i){ %>
-            <li class="mui-table-view-cell" data-click="goto" data-page="read" data-text="{{ x.text }}">
-                <div class="mui-navigate-right">
-                    <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{ x.text }}</p>
+        <div class="mui-table-view scroll-wrapper refreshBox">
+            <div class="scroll-content">
+                <% _.each(word_list,function(x,i){ %>
+                <div class="mui-table-view-cell" data-click="goto" data-page="read" data-text="{{ x.text }}">
+                    <div class="mui-navigate-right">
+                        <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{ x.text
+                            }}</p>
+                    </div>
                 </div>
-            </li>
-            <% }) %>
-        </ul>
+                <% }) %>
+            </div>
+
+        </div>
     </div>
 </div>

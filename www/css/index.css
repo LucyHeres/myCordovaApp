@@ -188,13 +188,23 @@ body {
   position: absolute;
   top: 0;
   background: none !important;
+  height: 100%;
+  overflow-y: hidden;
+}
+.mui-content .scroll-wrapper {
+  height: 100%;
+  overflow-y: scroll;
 }
 /*匹配 .mui-bar-nav 之后所有的 .mui-content（即后面的所有叫mui-content的兄弟）。*/
 .mui-bar ~ .mui-content {
   padding-top: 44px !important;
 }
+.mui-bar {
+  box-shadow: none;
+  position: static;
+}
 .header-bar {
-  box-shadow: 0 1px 2px rgba(200, 200, 200, 0.8);
+  box-shadow: 0 1px 2px rgba(200, 200, 200, 0.8) !important;
 }
 .carousel {
   display: flex;
@@ -219,12 +229,13 @@ body {
 }
 .carousel-tabs {
   display: flex;
+  background: #cfd2d4;
 }
 .carousel-tabs .carousel-tab {
   flex: 1;
   margin: 0 0.3rem;
-  height: 42px;
-  line-height: 44px;
+  height: 36px;
+  line-height: 36px;
   text-align: center;
 }
 .carousel-tabs .carousel-tab.active {

@@ -25,11 +25,8 @@ var CDplugs = {
         var NUM = $this.children().length;
         $this.children().css("width", width + "px");
         $this.css("width", NUM * width + "px");
-        // 如果轮播的父元素是mui-content ,需要特殊设置
-        $this.parent().css("overflow", "hidden");//大/小轮播都设置
-        if ($this.parent().hasClass("mui-content")) {
-            $this.parent().css("height", "100%");//只设置大轮播，即父元素是.mui-content的大轮播
-        }
+
+        $this.parent().css("overflow-x", "hidden");
 
         $this.on('swipeleft', function () {
             event.stopPropagation();
@@ -84,7 +81,7 @@ var CDplugs = {
         $this.html("<p>下拉刷新...</p>");
         var startY = null;//开始抓取标志位
         var endY = countY = 0;
-        $(".refreshBox").on('touchstart', function (event) {
+        $(".scroll-content").on('touchstart', function (event) {
             if (refreshFlag) {
                 event.preventDefault();
                 return;
@@ -92,7 +89,7 @@ var CDplugs = {
             var touch = event.targetTouches[0];
             startY = touch.pageY;
         });
-        $(".refreshBox").on('touchmove', function (event) {
+        $(".scroll-content").on('touchmove', function (event) {
             if (startY === null) {
                 return;
             }
@@ -101,24 +98,34 @@ var CDplugs = {
                 return;
             }
             var idx = $(".carousel-tabs .active").index();
-            if ($(".mui-content").offset().top == 0) {
-                if ($(".mui-content").children(".carousel").length != 0) {
-                    if ($(".mui-content .container:eq(" + idx + ")").offset().top < 44) {
-                        return;
-                    }
+            var fixVal = parseInt($(".app").css("height"))- parseInt($(".scroll-wrapper").css("height"));
+            //有轮播的页面
+            if ($(".mui-content .scroll-wrapper").children(".carousel").length != 0) {
+                if ($(".carousel_item .scroll-content:eq(" + idx + ")").offset().top >= fixVal) {
+                    var touch = event.targetTouches[0];
+                    endY = touch.pageY;
+                    countY = endY - startY;
+                    _countY = (endY - startY) / 5;
+                    countY = countY > 300 ? 300 : countY;
+                    $this.css("height", _countY + "px");
+                } else {
+                    return;
                 }
-                var touch = event.targetTouches[0];
-                endY = touch.pageY;
-                countY = endY - startY;
-                _countY = (endY - startY) / 5;
-                countY = countY > 300 ? 300 : countY;
-                $this.css("height", _countY + "px");
-            } else {
-                //不执行刷新操作
             }
-
+            else {//没有轮播的页面
+                if ($(".scroll-wrapper .scroll-content").offset().top >= fixVal) {
+                    var touch = event.targetTouches[0];
+                    endY = touch.pageY;
+                    countY = endY - startY;
+                    _countY = (endY - startY) / 5;
+                    countY = countY > 300 ? 300 : countY;
+                    $this.css("height", _countY + "px");
+                } else {
+                    return;
+                }
+            }
         });
-        $(".refreshBox").on('touchend', function (event) {
+        $(".scroll-content").on('touchend', function (event) {
             if (refreshFlag) {
                 event.preventDefault();
                 return;
