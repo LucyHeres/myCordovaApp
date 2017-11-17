@@ -47,10 +47,18 @@ var CDpages = {
     },
     goto: function (page_name, page_para) {
         var $last = $('.app>div:last');
-        $last.removeClass("on");
-        /**前进 */
-        var page = CDpages.pages[page_name];
-        var page_html = page.page(page_para);
+        if(CDapp.children().length==0){
+            var page = CDpages.pages[page_name];
+            var page_html = page.page(page_para);
+        }else {
+            $last.removeClass("on");
+            // CDplugs.page_loading.show();
+            var page = CDpages.pages[page_name];
+            var page_html = page.page(page_para);
+            // CDplugs.page_loading.hide();
+
+        }
+
         CDapp.append(page_html);
 
         //Dom 加载完之后执行的init，不同于__init__是dom加载完成前对页面上所需数据的init
@@ -125,6 +133,7 @@ var CDframe = {
                 },
                 //加载该组件，并渲染到页面
                 page: function (page_para) {
+
                     console.log('传进来的参数', page_para);
                     this.load();
                     //page_data 为本页面用到的数据

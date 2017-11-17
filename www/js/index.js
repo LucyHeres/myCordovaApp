@@ -55,7 +55,7 @@ var app = {
                 lazy:true
             }
         });
-        CDplugs.init();
+
         //安卓手机硬件退出问题
         var eventBackButton = function () {
             if (CDpages.get_current().page.name == 'words' || CDpages.get_current().page.name == 'login') {

@@ -12,21 +12,21 @@
             <div class="carousel-tab">音频</div>
         </div>
         <div data-plug="pullDownRefresh" class="pullDownRefresh"></div>
-        <div class="scroll-wrapper">
-            <div data-plug="carousel" class="carousel hasTab refreshBox">
-                <div class="carousel_item" style="display: flex;">
-                    <div class="rank_list">
-                        <div class="rank_item" data-click="toggle_rank" data-para="novel">风云榜</div>
-                        <div class="rank_item active" data-click="toggle_rank" data-para="story">风云榜</div>
-                        <div class="rank_item" data-click="toggle_rank">风云榜</div>
-                        <div class="rank_item" data-click="toggle_rank">风云榜</div>
-                        <div class="rank_item" data-click="toggle_rank">风云榜</div>
-                        <div class="rank_item" data-click="toggle_rank">风云榜</div>
-                        <div class="rank_item" data-click="toggle_rank">风云榜</div>
-                        <div class="rank_item" data-click="toggle_rank">风云榜</div>
-                        <div class="rank_item" data-click="toggle_rank">风云榜</div>
-                    </div>
-                    <div class="scroll-content booklist" style="width:75%;">
+        <div data-plug="carousel" class="carousel hasTab refreshBox">
+            <div class="carousel_item" style="display: flex;">
+                <div class="rank_list">
+                    <div class="rank_item" data-click="toggle_rank" data-para="novel">风云榜</div>
+                    <div class="rank_item active" data-click="toggle_rank" data-para="story">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                </div>
+                <div class="scroll-wrapper" style="width:75%;">
+                    <div class="scroll-content booklist">
                         <% _.each(book_list,function(x,i){ %>
                         <div class="mui-table-view-cell">
                             <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
@@ -34,40 +34,165 @@
                             </p>
                         </div>
                         <% }) %>
-                        <!--<div data-plug="carousel" class="carousel">-->
-                        <!--<div class="carousel_item">-->
-                        <!--<div>小轮播1</div>-->
-                        <!--<div>小轮播1</div>-->
-                        <!--<div>小轮播1</div>-->
-                        <!--</div>-->
-                        <!--<div class="carousel_item">-->
-                        <!--<div>小轮播2</div>-->
-                        <!--<div>小轮播2</div>-->
-                        <!--<div>小轮播2</div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                    </div>
-                </div>
-                <div class="carousel_item">
-                    <div class="scroll-content">
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                1111
+                            </p>
+                        </div>
 
                     </div>
                 </div>
-                <div class="carousel_item">
-                    <div class="scroll-content">
+            </div>
+            <div class="carousel_item" style="display: flex;">
+                <div class="rank_list">
+                    <div class="rank_item" data-click="toggle_rank" data-para="novel">风云榜</div>
+                    <div class="rank_item active" data-click="toggle_rank" data-para="story">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                </div>
+                <div class="scroll-wrapper" style="width:75%;">
+                    <div class="scroll-content booklist">
+                        <% _.each(book_list,function(x,i){ %>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                {{x.name}}
+                            </p>
+                        </div>
+                        <% }) %>
+
                     </div>
                 </div>
-                <div class="carousel_item">
-                    <div class="scroll-content">
+            </div>
+            <div class="carousel_item" style="display: flex;">
+                <div class="rank_list">
+                    <div class="rank_item" data-click="toggle_rank" data-para="novel">风云榜</div>
+                    <div class="rank_item active" data-click="toggle_rank" data-para="story">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                </div>
+                <div class="scroll-wrapper" style="width:75%;">
+                    <div class="scroll-content booklist">
+                        <% _.each(book_list,function(x,i){ %>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                {{x.name}}
+                            </p>
+                        </div>
+                        <% }) %>
+
                     </div>
                 </div>
-                <div class="carousel_item">
-                    <div class="scroll-content">
+            </div>
+            <div class="carousel_item" style="display: flex;">
+                <div class="rank_list">
+                    <div class="rank_item" data-click="toggle_rank" data-para="novel">风云榜</div>
+                    <div class="rank_item active" data-click="toggle_rank" data-para="story">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                </div>
+                <div class="scroll-wrapper" style="width:75%;">
+                    <div class="scroll-content booklist">
+                        <% _.each(book_list,function(x,i){ %>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                {{x.name}}
+                            </p>
+                        </div>
+                        <% }) %>
+
+                    </div>
+                </div>
+            </div>
+            <div class="carousel_item" style="display: flex;">
+                <div class="rank_list">
+                    <div class="rank_item" data-click="toggle_rank" data-para="novel">风云榜</div>
+                    <div class="rank_item active" data-click="toggle_rank" data-para="story">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                    <div class="rank_item" data-click="toggle_rank">风云榜</div>
+                </div>
+                <div class="scroll-wrapper" style="width:75%;">
+                    <div class="scroll-content booklist">
+                        <% _.each(book_list,function(x,i){ %>
+                        <div class="mui-table-view-cell">
+                            <p style="width: 90%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
+                                {{x.name}}
+                            </p>
+                        </div>
+                        <% }) %>
+
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
 </div>
+
+
+<!--<div data-plug="carousel" class="carousel">-->
+<!--<div class="carousel_item">-->
+<!--<div>小轮播1</div>-->
+<!--<div>小轮播1</div>-->
+<!--<div>小轮播1</div>-->
+<!--</div>-->
+<!--<div class="carousel_item">-->
+<!--<div>小轮播2</div>-->
+<!--<div>小轮播2</div>-->
+<!--<div>小轮播2</div>-->
+<!--</div>-->
+<!--</div>-->
