@@ -46,50 +46,78 @@ var CDpages = {
         }
     },
     goto: function (page_name, page_para) {
-        var $last = $('.app>div:last');
-        if(CDapp.children().length==0){
+
+        if (CDapp.children().length == 0) {
             var page = CDpages.pages[page_name];
             var page_html = page.page(page_para);
-        }else {
-            $last.removeClass("on");
-            // CDplugs.page_loading.show();
-            var page = CDpages.pages[page_name];
-            var page_html = page.page(page_para);
-            // CDplugs.page_loading.hide();
+            CDapp.append(page_html);
 
-        }
-
-        CDapp.append(page_html);
-
-        //Dom 加载完之后执行的init，不同于__init__是dom加载完成前对页面上所需数据的init
-        if (CDctrl[page_name].init) {
-            CDctrl[page_name].init();
-        }
-
-        //如果页面高度小于屏幕高，设置页面高度
-        if (parseInt($last.css("height")) < window.screen.height) {
-            $last.css("height", window.screen.height + "px");
-        }
-        var $last = $('.app>div:last');
-        $last.addClass("on");
-        // 如果页面需要从右侧滑入
-        if ($last.hasClass('slideIn')) {
-            $last.removeClass('slideIn');
-            $last.addClass('slideInRight');
-        }
-        //添加新页面1s后，删除上一个页面
-        setTimeout(function () {
-            if (CDapp.children().length > 1) {
-                CDapp.children()[0].remove();
+            //Dom 加载完之后执行的init，不同于__init__是dom加载完成前对页面上所需数据的init
+            if (CDctrl[page_name].init) {
+                CDctrl[page_name].init();
             }
-        }, 1000);
+            var $last = $('.app>div:last');
+            //如果页面高度小于屏幕高，设置页面高度
+            if (parseInt($last.css("height")) < window.screen.height) {
+                $last.css("height", window.screen.height + "px");
+            }
+            $last.addClass("on");
+            // 如果页面需要从右侧滑入
+            // if ($last.hasClass('slideIn')) {
+            //     $last.removeClass('slideIn');
+            //     $last.addClass('slideInRight');
+            // }
 
-        CDpages.history.push({
-            page: page,
-            para: page_para,
-            cache: page.settings.cache ? page_html : null,
-        })
-        console.log('路由历史表', CDpages.history)
+
+            CDpages.history.push({
+                page: page,
+                para: page_para,
+                cache: page.settings.cache ? page_html : null,
+            })
+            console.log('路由历史表', CDpages.history);
+        } else {
+            var $last = $('.app>div:last');
+            $last.removeClass("on");
+            CDplugs.page_loading.show();
+            setTimeout(function () {
+                var page = CDpages.pages[page_name];
+                var page_html = page.page(page_para);
+
+
+                CDapp.append(page_html);
+
+                //Dom 加载完之后执行的init，不同于__init__是dom加载完成前对页面上所需数据的init
+                if (CDctrl[page_name].init) {
+                    CDctrl[page_name].init();
+                }
+                var $last = $('.app>div:last');
+                //如果页面高度小于屏幕高，设置页面高度
+                if (parseInt($last.css("height")) < window.screen.height) {
+                    $last.css("height", window.screen.height + "px");
+                }
+                $last.addClass("on");
+                如果页面需要从右侧滑入
+                if ($last.hasClass('slideIn')) {
+                    $last.removeClass('slideIn');
+                    $last.addClass('slideInRight');
+                }
+
+
+                CDpages.history.push({
+                    page: page,
+                    para: page_para,
+                    cache: page.settings.cache ? page_html : null,
+                })
+                console.log('路由历史表', CDpages.history);
+            }, 1);
+            //添加新页面1s后，删除上一个页面
+            setTimeout(function () {
+                if (CDapp.children().length > 1) {
+                    CDapp.children()[0].remove();
+                }
+            }, 1000);
+        }
+
     },
 }
 //框架主文件
@@ -133,7 +161,6 @@ var CDframe = {
                 },
                 //加载该组件，并渲染到页面
                 page: function (page_para) {
-
                     console.log('传进来的参数', page_para);
                     this.load();
                     //page_data 为本页面用到的数据
@@ -145,6 +172,9 @@ var CDframe = {
                     console.log('页面接收后处理过的参数', page_para);
                     //将该页面的html代码框架（即template）和 该页面所用到的数据（即page_data）混合，用于渲染到页面上
                     var res = page_data ? CDframe._template(this.template, page_data) : this.template;
+                    if ($("#page_loading").length) {
+                        CDplugs.page_loading.hide();
+                    }
                     return res;
                 }
             }

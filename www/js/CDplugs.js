@@ -174,7 +174,7 @@ var CDplugs = {
         template:`
             <div id="page_loading" style="width:100%;height:100%;position:absolute;z-index:1000;background: #fff;">
         <div style="position: relative;width:100%;height:100%;" >
-            <div style="width:5.5rem;height:5.5rem;background:url(img/timg.gif) no-repeat center center;background-size:100% 100%;
+            <div style="width:7.2rem;height:7.2rem;background:url(img/timg.gif) no-repeat center center;background-size:100% 100%;
             border-radius:5px;position: absolute;top:50%;left:50%;transform:translate(-50%,-50%);">
             </div>
         </div>
